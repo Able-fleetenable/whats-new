@@ -1,5 +1,5 @@
 /**
- * Deploy-time catalog of features the carrier UI walks users through.
+ * What's New — deploy-time catalog for the Able feature walkthrough.
  *
  * Add a new entry when you ship something people should acknowledge. Ids are
  * stable: once accepted they never reappear. Bump the id (e.g. `inbox.v2`) if
@@ -10,7 +10,7 @@
  *   - `new`      — only users whose first Able login is on/after `shippedAt`
  *   - `existing` — only users who already had Able before `shippedAt`
  *
- * `requires` (agents-mode page gate — same keys as try-todos / AgentPage):
+ * `requires` (agents-mode page gate):
  *   - omitted     — always shown (theme, profile, …)
  *   - `chat`      — Personal Assistant / Analyst
  *   - `inbox`     — Customer Service Agent (csr)
@@ -26,7 +26,7 @@ export type FeatureRequires = "chat" | "inbox" | "insights" | "reminders";
 /** Where the control lives on mobile (drawer vs main chrome). */
 export type FeatureMobileChrome = "drawer" | "page";
 
-export type FeatureDef = {
+export type WhatsNewItem = {
   id: string;
   title: string;
   body: string;
@@ -45,8 +45,8 @@ export type FeatureDef = {
   mobileChrome?: FeatureMobileChrome;
 };
 
-/** Starter pack + room for later update cards. Order = walkthrough order. */
-export const FEATURE_CATALOG: readonly FeatureDef[] = [
+/** Order = walkthrough order. */
+export const WHATS_NEW: readonly WhatsNewItem[] = [
   {
     id: "welcome.chat",
     title: "Chat with Able",
@@ -141,22 +141,3 @@ export const FEATURE_CATALOG: readonly FeatureDef[] = [
     mobileChrome: "page",
   },
 ];
-
-const byId = new Map(FEATURE_CATALOG.map((f) => [f.id, f]));
-
-export function isFeatureId(id: string): boolean {
-  return byId.has(id);
-}
-
-export function featureById(id: string): FeatureDef | undefined {
-  return byId.get(id);
-}
-
-/** Feature ids whose mobile coachmark lives in the nav drawer. */
-export const MOBILE_DRAWER_FEATURE_IDS: ReadonlySet<string> = new Set(
-  FEATURE_CATALOG.filter((f) => f.mobileChrome === "drawer").map((f) => f.id),
-);
-
-export function featureNeedsMobileDrawer(id: string): boolean {
-  return MOBILE_DRAWER_FEATURE_IDS.has(id);
-}

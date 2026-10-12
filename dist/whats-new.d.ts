@@ -1,5 +1,5 @@
 /**
- * Deploy-time catalog of features the carrier UI walks users through.
+ * What's New — deploy-time catalog for the Able feature walkthrough.
  *
  * Add a new entry when you ship something people should acknowledge. Ids are
  * stable: once accepted they never reappear. Bump the id (e.g. `inbox.v2`) if
@@ -10,7 +10,7 @@
  *   - `new`      — only users whose first Able login is on/after `shippedAt`
  *   - `existing` — only users who already had Able before `shippedAt`
  *
- * `requires` (agents-mode page gate — same keys as try-todos / AgentPage):
+ * `requires` (agents-mode page gate):
  *   - omitted     — always shown (theme, profile, …)
  *   - `chat`      — Personal Assistant / Analyst
  *   - `inbox`     — Customer Service Agent (csr)
@@ -23,7 +23,7 @@ export type FeatureAudience = "all" | "new" | "existing";
 export type FeatureRequires = "chat" | "inbox" | "insights" | "reminders";
 /** Where the control lives on mobile (drawer vs main chrome). */
 export type FeatureMobileChrome = "drawer" | "page";
-export type FeatureDef = {
+export type WhatsNewItem = {
     id: string;
     title: string;
     body: string;
@@ -41,10 +41,5 @@ export type FeatureDef = {
      */
     mobileChrome?: FeatureMobileChrome;
 };
-/** Starter pack + room for later update cards. Order = walkthrough order. */
-export declare const FEATURE_CATALOG: readonly FeatureDef[];
-export declare function isFeatureId(id: string): boolean;
-export declare function featureById(id: string): FeatureDef | undefined;
-/** Feature ids whose mobile coachmark lives in the nav drawer. */
-export declare const MOBILE_DRAWER_FEATURE_IDS: ReadonlySet<string>;
-export declare function featureNeedsMobileDrawer(id: string): boolean;
+/** Order = walkthrough order. */
+export declare const WHATS_NEW: readonly WhatsNewItem[];

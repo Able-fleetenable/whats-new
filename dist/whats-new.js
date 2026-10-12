@@ -1,11 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.MOBILE_DRAWER_FEATURE_IDS = exports.FEATURE_CATALOG = void 0;
-exports.isFeatureId = isFeatureId;
-exports.featureById = featureById;
-exports.featureNeedsMobileDrawer = featureNeedsMobileDrawer;
-/** Starter pack + room for later update cards. Order = walkthrough order. */
-exports.FEATURE_CATALOG = [
+exports.WHATS_NEW = void 0;
+/** Order = walkthrough order. */
+exports.WHATS_NEW = [
     {
         id: "welcome.chat",
         title: "Chat with Able",
@@ -100,15 +97,3 @@ exports.FEATURE_CATALOG = [
         mobileChrome: "page",
     },
 ];
-const byId = new Map(exports.FEATURE_CATALOG.map((f) => [f.id, f]));
-function isFeatureId(id) {
-    return byId.has(id);
-}
-function featureById(id) {
-    return byId.get(id);
-}
-/** Feature ids whose mobile coachmark lives in the nav drawer. */
-exports.MOBILE_DRAWER_FEATURE_IDS = new Set(exports.FEATURE_CATALOG.filter((f) => f.mobileChrome === "drawer").map((f) => f.id));
-function featureNeedsMobileDrawer(id) {
-    return exports.MOBILE_DRAWER_FEATURE_IDS.has(id);
-}
