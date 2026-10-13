@@ -1,6 +1,6 @@
 /**
- * What's New — feature announcement catalog for all signed-in users.
- * Order = display order. Ids are stable once seen.
+ * What's New — shown on login for new and existing users.
+ * Only entries in this array are announced. Currently: Meet Reminders.
  */
 const WHATS_NEW = [
   {
