@@ -1,12 +1,12 @@
 /**
- * What's New — feature walkthrough catalog.
- * Order = walkthrough order. Ids are stable once accepted.
+ * What's New — feature announcement catalog.
+ * Order = display order. Ids are stable once seen.
  *
  * audience: "all" | "new" | "existing"
  * requires (optional): "chat" | "inbox" | "insights" | "reminders"
  * mobileChrome (optional): "drawer" | "page" (default page)
  */
-module.exports = [
+const WHATS_NEW = [
   {
     id: "welcome.chat",
     title: "Chat with Able",
@@ -75,13 +75,13 @@ module.exports = [
   },
   {
     id: "welcome.reminders",
-    title: "Set operational reminders",
-    body: "Easily schedule notifications in natural language for yourself. Able will deliver timely alerts directly to your bell icon to keep important milestones on track.",
+    title: "Meet Reminders",
+    body: "Stay on top of important tasks and follow-ups.",
     shippedAt: "2026-10-08T00:00:00.000Z",
     audience: "all",
     requires: "reminders",
     href: "/reminders",
-    ctaLabel: "Open Reminders",
+    ctaLabel: "Explore",
     mobileChrome: "drawer",
   },
   {
@@ -101,3 +101,7 @@ module.exports = [
     mobileChrome: "page",
   },
 ];
+
+const { version: VERSION } = require("../package.json");
+
+module.exports = { WHATS_NEW, VERSION };

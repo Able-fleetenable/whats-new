@@ -1,0 +1,22 @@
+{
+  "name": "@able/whats-new",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Able What's New catalog — npm-consumed feature announcement array",
+  "main": "./catalog/whats-new.js",
+  "types": "./catalog/whats-new.d.ts",
+  "exports": {
+    ".": {
+      "types": "./catalog/whats-new.d.ts",
+      "require": "./catalog/whats-new.js",
+      "default": "./catalog/whats-new.js"
+    }
+  },
+  "files": [
+    "catalog"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com:Able-fleetenable/whats-new.git"
+  }
+}
